@@ -36,21 +36,19 @@ class RandomBulkParamSource(ParamSource):
 
 def generate_knn_query(query_vector, partition_id, k, rescore_oversample):
     return {
-        "_source": {"exclude_vectors": True},
+        "docvalue_fields" : ["_id"],
+        "stored_fields" : "_none_",
         "knn": {
-            "field": "emb",
-            "query_vector": query_vector,
-            "k": k,
-            "num_candidates": k,
-            "filter": {"term": {"partition_id": partition_id}},
-            "rescore_vector": {"oversample": rescore_oversample},
+            "emb": {
+                "vector": query_vector,
+                "k": k
+            }
         },
     }
 
-
 class RandomSearchParamSource:
     def __init__(self, track, params, **kwargs):
-        self._index_name = track.data_streams[0].name
+        self._index_name = params.get('index_name','test-index')
         self._cache = params.get("cache", False)
         self._partitions = params.get("partitions", 1000)
         self._dims = params.get("dims", 128)
@@ -72,4 +70,4 @@ class RandomSearchParamSource:
 
 def register(registry):
     registry.register_param_source("random-bulk-param-source", RandomBulkParamSource)
-    #registry.register_param_source("knn-param-source", RandomSearchParamSource)
+    registry.register_param_source("knn-param-source", RandomSearchParamSource)
