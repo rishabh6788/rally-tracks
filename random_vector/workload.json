@@ -2,6 +2,16 @@
 {
   "version": 2,
   "description": "Benchmarking filtered search on random vectors",
+  "indices": [
+  {
+  "name": "{{ target_index_name | default('target_index') }}",
+  "body": "{{ target_index_body }}"
+  },
+  {
+  "name": "{{ train_index_name | default('train_index') }}",
+  "body": "{{ train_index_body }}"
+  }
+  ],
   "operations": [
     {{ benchmark.collect(parts="operations/*.json") }}
   ],

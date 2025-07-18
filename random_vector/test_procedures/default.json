@@ -4,29 +4,11 @@
   "default": true,
   "schedule": [
     {
-      "name": "delete-data-stream",
       "operation": {
-        "operation-type": "delete-data-stream",
-        "data-stream": [
-          "vectors-benchmark-random"
-        ]
+        "name": "create-target-index",
+        "operation-type": "create-index",
+        "index": "{{ target_index_name | default('target_index') }}"
       }
-    },
-    {
-      "name": "delete-templates",
-      "operation": {
-        "operation-type": "delete-composable-template"
-      }
-    },
-    {
-      "name": "create-templates",
-      "operation": {
-        "operation-type": "create-composable-template"
-      }
-    },
-    {
-      "name": "check-cluster-health",
-      "operation": "check-cluster-health"
     },
     {
       "name": "random-indexing",
