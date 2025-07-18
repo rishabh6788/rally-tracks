@@ -72,4 +72,4 @@ class RandomSearchParamSource:
 
 def register(registry):
     registry.register_param_source("random-bulk-param-source", RandomBulkParamSource)
-    registry.register_param_source("knn-param-source", RandomSearchParamSource)
+    #registry.register_param_source("knn-param-source", RandomSearchParamSource)

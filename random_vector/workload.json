@@ -1,4 +1,4 @@
-{% import "rally.helpers" as rally with context %}
+{% import "benchmark.helpers" as benchmark with context %}
 {
   "version": 2,
   "description": "Benchmarking filtered search on random vectors",
