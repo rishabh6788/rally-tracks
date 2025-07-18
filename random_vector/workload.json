@@ -3,10 +3,10 @@
   "version": 2,
   "description": "Benchmarking filtered search on random vectors",
   "operations": [
-    {{ rally.collect(parts="operations/*.json") }}
+    {{ benchmark.collect(parts="operations/*.json") }}
   ],
-  "challenges": [
-    {{ rally.collect(parts="test_procedures/*.json") }}
+  "test_procedures": [
+    {{ benchmark.collect(parts="test_procedures/*.json") }}
   ],
   "dependencies": [
     "numpy"
