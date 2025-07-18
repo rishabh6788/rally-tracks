@@ -1,14 +1,14 @@
 import random
 import time
 
-from esrally.track.params import ParamSource
+from osbenchmark.workload.params import ParamSource
 
 
 class RandomBulkParamSource(ParamSource):
     def __init__(self, track, params, **kwargs):
         super().__init__(track, params, **kwargs)
         self._bulk_size = params.get("bulk-size", 1000)
-        self._index_name = track.data_streams[0].name
+        self._index_name = params.get('index_name','test-index')
         self._dims = params.get("dims", 128)
         self._partitions = params.get("partitions", 1000)
 
