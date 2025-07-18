@@ -38,12 +38,14 @@ def generate_knn_query(query_vector, partition_id, k, rescore_oversample):
     return {
         "docvalue_fields" : ["_id"],
         "stored_fields" : "_none_",
-        "knn": {
-            "emb": {
-                "vector": query_vector,
-                "k": k
+        "query":{
+            "knn": {
+                "emb": {
+                    "vector": query_vector,
+                    "k": k
+                }
             }
-        },
+        }
     }
 
 class RandomSearchParamSource:
