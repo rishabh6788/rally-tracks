@@ -12,7 +12,7 @@
       },
       "emb" : {
         "type" : "knn_vector",
-        "dimension" : 100,
+        "dimension" : {{ dims | default(128) | tojson }},
         "method" : {
           "engine" : "faiss",
           "space_type" : "innerproduct",
