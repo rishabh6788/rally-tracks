@@ -23,6 +23,6 @@
   "dims": {{ dims | default(128) | int }},
   "partitions": {{ partitions | default(1000) | int }},
   "rescore-oversample": {{ rescore_oversample | default(0) | int }},
-  "index_name": "{{ index_name | default('knn-index-1') }}"
+  "index_name": "{{ target_index_name | default('knn-index-1') }}"
 }
 
