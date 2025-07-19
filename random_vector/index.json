@@ -7,15 +7,29 @@
   },
   "mappings": {
     "properties": {
-      "emb": {
-        "type": "knn_vector",
-        "dimension": 1596,
-        "space_type": "innerproduct",
-        "method": {
-          "name": "hnsw",
-          "engine": "faiss"
+      "partition_id": {
+        "type": "keyword"
+      },
+      "emb" : {
+        "type" : "knn_vector",
+        "dimension" : 100,
+        "method" : {
+          "engine" : "faiss",
+          "space_type" : "innerproduct",
+          "name" : "hnsw",
+          "parameters" : {
+            "ef_construction" : 100,
+            "encoder" : {
+              "name" : "sq",
+              "parameters" : {
+                "type" : "fp16",
+                "clip" : true
+              }
+            }
+          }
         }
       }
     }
   }
 }
+
